@@ -61,6 +61,14 @@ body, .navbar, .button, .title, .subtitle, p, a {
 }
 
 /* ── Interactive viewer (iframe) ──────────────────── */
+.viewer-frame {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  background: white;
+  overflow: hidden;
+  line-height: 0; /* no gap under iframe */
+}
+
 .results-carousel {
   overflow: hidden;
 }
@@ -73,10 +81,10 @@ body, .navbar, .button, .title, .subtitle, p, a {
 }
 
 #viewer-iframe {
+  display: block;
   width: 100%;
   height: 70vh;
   border: none;
-  border-radius: 10px;
 }
 
 /* ── Thumbnail gallery ────────────────────────────── */

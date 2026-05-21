@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MicroZoom</title>
+  <title>MicroZoom: Structure-Preserving Detail Synthesis at Extreme Scale</title>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,22 +13,62 @@
   <!-- Bulma CSS framework -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 
-  <!-- Bulma carousel / slider -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.24/dist/css/bulma-carousel.min.css">
-
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Academicons (arXiv symbol) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
 
   <!-- Project stylesheet -->
   <link rel="stylesheet" href="static/css/index.css">
 
-  <!-- jQuery + Bulma carousel JS -->
+  <!-- jQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.24/dist/js/bulma-carousel.min.js"></script>
 
   <style>
-    body {
-      font-family: 'Google Sans', 'Noto Sans', sans-serif;
+    /* Thumbnail scroll strip (viewer section) */
+    .viewer-thumb-strip {
+      display: flex;
+      overflow-x: auto;
+      gap: 8px;
+      padding: 8px 0;
+      scroll-behavior: smooth;
+    }
+    .viewer-thumb-strip .thumb-item {
+      flex: 0 0 auto;
+      cursor: pointer;
+      border: 3px solid transparent;
+      border-radius: 6px;
+      overflow: hidden;
+      width: 90px;
+      height: 90px;
+      transition: border-color 0.2s;
+    }
+    .viewer-thumb-strip .thumb-item img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .viewer-thumb-strip .thumb-item.is-active,
+    .viewer-thumb-strip .thumb-item:hover {
+      border-color: deepskyblue;
+    }
+
+    /* Placeholder blocks for missing figures */
+    .fig-placeholder {
+      background: #e8e8e8;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #888;
+      font-style: italic;
+    }
+
+    /* Results table */
+    .results-table {
+      font-size: 0.9rem;
+    }
+    .results-table th {
+      background-color: #f5f5f5;
     }
   </style>
 </head>
@@ -39,24 +79,6 @@
   <i class="fas fa-chevron-up"></i>
 </button>
 
-<!-- ── Navbar ────────────────────────────────────────────────────── -->
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-  <div class="navbar-menu">
-    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-      <a class="navbar-item" href="https://github.com/MicroZoom-SR/MicroZoom" target="_blank">
-        <span class="icon"><i class="fab fa-github"></i></span>
-        <span>Code</span>
-      </a>
-    </div>
-  </div>
-</nav>
 
 <!-- ── Hero / Title ─────────────────────────────────────────────── -->
 <section class="hero">
@@ -66,23 +88,35 @@
         <div class="column has-text-centered">
 
           <h1 class="title is-1 publication-title">
-            MicroZoom: Generating Gigapixel Images from Close-Up Macro Photographs
+            MicroZoom: Structure-Preserving Detail Synthesis at Extreme Scale
           </h1>
 
-          <div class="is-size-5 publication-authors">
+          <!-- <div class="is-size-5 publication-authors">
             <span class="author-block">Anonymous Authors</span>
           </div>
 
           <div class="is-size-5 publication-venue" style="margin-top: 0.5rem;">
-            <span class="author-block"><strong>SIGGRAPH 2025</strong></span>
-          </div>
+            <span><strong>SIGGRAPH 2025</strong></span>
+          </div> -->
 
           <div class="column has-text-centered" style="margin-top: 1rem;">
             <div class="publication-links">
               <span class="link-block">
-                <a href="#" class="external-link button is-normal is-rounded is-dark" target="_blank">
+                <a href="#" class="external-link button is-normal is-rounded is-dark">
                   <span class="icon"><i class="fas fa-file-pdf"></i></span>
-                  <span>Paper (coming soon)</span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-youtube"></i></span>
+                  <span>Video</span>
                 </a>
               </span>
               <span class="link-block">
@@ -101,15 +135,188 @@
 </section>
 
 
+<!-- ── Teaser ────────────────────────────────────────────────────── -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <!-- TODO: replace with <img src="static/images/teaser_v7.jpg" ...> -->
+      <div class="fig-placeholder" style="height: 400px;">
+        [ Teaser figure: teaser_v7 ]
+      </div>
+      <h2 class="subtitle has-text-centered" style="margin-top: 1rem;">
+        <span class="dnerf">MicroZoom</span> synthesizes gigapixel-resolution images grounded in
+        consumer-grade microscope close-ups at magnification levels up to 350&times;.
+      </h2>
+    </div>
+    <p style="text-align: center; margin-bottom: 2rem;">
+      Skip to: &nbsp;
+      <a href="#abstract">[Abstract]</a> &nbsp;
+      <a href="#video">[Video]</a> &nbsp;
+      <a href="#results">[Results]</a> &nbsp;
+      <a href="#method">[Method]</a> &nbsp;
+      <a href="#comparison">[Comparison]</a>
+    </p>
+  </div>
+</section>
+
+<!-- ── Interactive Results ───────────────────────────────────────── -->
+<section class="section" id="results" style="background-color: #f5f5f5;">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">
+      Results <br>
+      <span style="font-size: 0.65em; font-weight: 400;">(Interactive Viewer)</span>
+    </h2>
+    <p class="has-text-centered" style="margin-bottom: 1rem;">
+      Best viewed on a large screen &bull; Scroll / pinch to zoom &bull; Drag to pan &bull;
+      Image may take a few seconds to load after zooming
+    </p>
+
+    <div class="viewer-frame">
+      <iframe
+        id="viewer-iframe"
+        src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/rubiks_cube/index_fullzoom.html"
+        allowfullscreen
+        title="Interactive Teaser">
+      </iframe>
+    </div>
+
+    <!-- Thumbnail strip ─────────────────────────────────────────── -->
+    <div class="viewer-thumb-strip" style="margin-top: 1rem;">
+
+      <div class="thumb-item"
+           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/rubiks_cube/index_fullzoom.html"
+           title="Rubiks Cube">
+        <img src="static/images/thumbnails/rubiks_cube_thumb.jpg" alt="Rubiks Cube">
+      </div>
+      <div class="thumb-item"
+           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/strawberry/index_fullzoom.html"
+           title="Strawberry">
+        <img src="static/images/thumbnails/strawberry_thumb.jpg" alt="Strawberry">
+      </div>
+      <div class="thumb-item"
+           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/patagonia/index_fullzoom.html"
+           title="Patagonia">
+        <img src="static/images/thumbnails/patagonia_thumb.jpg" alt="Patagonia">
+      </div>
+      <div class="thumb-item"
+           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/tomato/index_fullzoom.html"
+           title="Tomato">
+        <img src="static/images/thumbnails/tomato_thumb.jpg" alt="Tomato">
+      </div>
+      <div class="thumb-item"
+           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/bread/index_fullzoom.html"
+           title="Bread">
+        <img src="static/images/thumbnails/bread_thumb.jpg" alt="Bread">
+      </div>
+      <div class="thumb-item"
+           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/broccoli/index_fullzoom.html"
+           title="Broccoli">
+        <img src="static/images/thumbnails/broccoli_thumb.jpg" alt="Broccoli">
+      </div>
+      <div class="thumb-item"
+           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/mushroom/index_fullzoom.html"
+           title="Mushroom">
+        <img src="static/images/thumbnails/mushroom_thumb.jpg" alt="Mushroom">
+      </div>
+      <div class="thumb-item"
+           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/cardigan/index_fullzoom.html"
+           title="Cardigan">
+        <img src="static/images/thumbnails/cardigan_thumb.jpg" alt="Cardigan">
+      </div>
+      <div class="thumb-item"
+           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/blue_cardigan/index_fullzoom.html"
+           title="Blue Cardigan">
+        <img src="static/images/thumbnails/blue_cardigan_thumb.jpg" alt="Blue Cardigan">
+      </div>
+      <div class="thumb-item"
+           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/plush/index_fullzoom.html"
+           title="Plush">
+        <img src="static/images/thumbnails/plush_thumb.jpg" alt="Plush">
+      </div>
+      <div class="thumb-item"
+           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/tote/index_fullzoom.html"
+           title="Tote">
+        <img src="static/images/thumbnails/tote_thumb.jpg" alt="Tote">
+      </div>
+      <div class="thumb-item"
+           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/lens_cloth/index_fullzoom.html"
+           title="Lens Cloth">
+        <img src="static/images/thumbnails/lens_cloth_thumb.jpg" alt="Lens Cloth">
+      </div>
+      <div class="thumb-item"
+           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/orange/index_fullzoom.html"
+           title="Orange">
+        <img src="static/images/thumbnails/orange_thumb.jpg" alt="Orange">
+      </div>
+      <div class="thumb-item"
+           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/wallet/index_fullzoom.html"
+           title="Wallet">
+        <img src="static/images/thumbnails/wallet_thumb.jpg" alt="Wallet">
+      </div>
+      <div class="thumb-item"
+           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/asian_pear/index_fullzoom.html"
+           title="Asian Pear">
+        <img src="static/images/thumbnails/asian_pear_thumb.jpg" alt="Asian Pear">
+      </div>
+      <div class="thumb-item"
+           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/leaf/index_fullzoom.html"
+           title="Leaf">
+        <img src="static/images/thumbnails/leaf_thumb.jpg" alt="Leaf">
+      </div>
+      <div class="thumb-item"
+           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/dill_cheese/index_fullzoom.html"
+           title="Dill Cheese">
+        <img src="static/images/thumbnails/dill_cheese_thumb.jpg" alt="Dill Cheese">
+      </div>
+      <div class="thumb-item"
+           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/microfiber/index_fullzoom.html"
+           title="Microfiber">
+        <img src="static/images/thumbnails/microfiber_thumb.jpg" alt="Microfiber">
+      </div>
+      <div class="thumb-item"
+           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/blue_shirt/index_fullzoom.html"
+           title="Blue Shirt">
+        <img src="static/images/thumbnails/blue_shirt_thumb.jpg" alt="Blue Shirt">
+      </div>
+      <div class="thumb-item"
+           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/salt/index_fullzoom.html"
+           title="Salt">
+        <img src="static/images/thumbnails/salt_thumb.jpg" alt="Salt">
+      </div>
+      <div class="thumb-item"
+           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/rice/index_fullzoom.html"
+           title="Rice">
+        <img src="static/images/thumbnails/rice_thumb.jpg" alt="Rice">
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ── Abstract ─────────────────────────────────────────────────── -->
-<section class="section">
+<section class="section" id="abstract">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            <!-- TODO: add abstract -->
+            We introduce MicroZoom, a generative framework for gigapixel image synthesis at the
+            microscopic scale. Given a standard photograph and a sparse set of consumer-grade
+            microscope close-ups, MicroZoom synthesizes a seamless, gigapixel-resolution image
+            grounded in the material character of the real references, enabling exploratory
+            visualization of microscopic texture across the full spatial extent of an object.
+            Our goal is plausible synthesis, not exact reconstruction. We focus on full-image,
+            reference-based, extreme-scale super-resolution at magnification levels of up to
+            350&times;, a setting that introduces two major challenges: (1)&nbsp;recovering
+            texture-specific detail from highly lossy inputs near ambiguous material boundaries,
+            and (2)&nbsp;preserving correct large-scale pattern structure, such as the repeating
+            geometry of a fabric weave, across millions of local predictions. We address these
+            with a two-stage cascaded design, where the first stage recovers global pattern
+            coherence and the second refines local texture detail, supplemented by a segmentation
+            mask to guide synthesis at ambiguous boundaries. We verify our approach on a
+            collection of self-captured everyday objects and demonstrate globally coherent,
+            materially grounded gigapixel imagery.
           </p>
         </div>
       </div>
@@ -118,96 +325,227 @@
 </section>
 
 
-<!-- ── Interactive Results ───────────────────────────────────────── -->
-<section class="section" style="background-color: #f5f5f5;">
+<!-- ── Video ─────────────────────────────────────────────────────── -->
+<section class="section" id="video">
   <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Interactive Results</h2>
-    <p class="has-text-centered" style="margin-bottom: 1rem;">
-      Use the deep-zoom viewer to explore our gigapixel outputs at full resolution.
-      Click a thumbnail below to switch examples.
-    </p>
-
-    <!-- Main viewer iframe — src is swapped by JS on thumbnail click -->
-    <iframe
-      id="viewer-iframe"
-      src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/"
-      allowfullscreen
-      title="MicroZoom deep-zoom viewer">
-    </iframe>
-
-    <!-- Thumbnail gallery ─────────────────────────────────────── -->
-    <!-- Add one .thumb-item per result; set data-viewer-src to the
-         per-example S3 URL, e.g. http://duckyduck123.s3-website-us-east-1.amazonaws.com/tote_cascade1/ -->
-    <div class="thumbnail-gallery" style="margin-top: 1rem;">
-
-      <div class="thumb-item"
-           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/tote_cascade1/"
-           title="Tote bag (cascade 1)">
-        <img src="static/images/tote_cascade1_thumb.jpg" alt="Tote bag cascade 1">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <!-- TODO: replace VIDEO_ID with the actual YouTube video ID -->
+          <!-- <iframe src="https://www.youtube.com/embed/VIDEO_ID?rel=0&showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
+          <div class="fig-placeholder" style="height: 100%; position: absolute; width: 100%; top: 0; left: 0;">
+            [ Video placeholder — embed YouTube URL here ]
+          </div>
+        </div>
       </div>
-
-      <div class="thumb-item"
-           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/tote_cascade2/"
-           title="Tote bag (cascade 2)">
-        <img src="static/images/tote_cascade2_thumb.jpg" alt="Tote bag cascade 2">
-      </div>
-
-      <!-- TODO: add more thumb-items as additional results are uploaded to S3 -->
-
     </div>
   </div>
 </section>
 
 
 <!-- ── Method ────────────────────────────────────────────────────── -->
-<section class="section">
+<section class="section" id="method">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">How It Works</h2>
+    <div class="content has-text-justified" style="margin-bottom: 2rem;">
+      <p>
+        Our framework consists of three stages:
+        <a href="#stage-data">Dataset Construction</a>,
+        <a href="#stage-finetune">Per-Instance Fine-Tuning</a>, and
+        <a href="#stage-inference">Gigapixel Inference</a>.
+      </p>
+    </div>
 
-    <div class="columns is-multiline">
+    <!-- Pipeline overview figure -->
+    <!-- TODO: replace with <img src="static/images/pipeline_v3.jpg" ...> -->
+    <div class="fig-placeholder" style="height: 320px; margin-bottom: 2.5rem;">
+      [ Pipeline overview figure: pipeline_v3 ]
+    </div>
 
-      <!-- Step 1 -->
-      <div class="column is-one-third has-text-centered">
-        <span class="icon is-large" style="color: deepskyblue;">
-          <i class="fas fa-camera fa-2x"></i>
-        </span>
-        <h3 class="title is-5" style="margin-top: 0.5rem;">1. Data Capture</h3>
-        <p class="has-text-justified">
-          We capture a set of close-up macro photographs of an object alongside a single
-          full-view reference image. A connecting video is used to register each close-up
-          to the corresponding region in the full image, producing per-pixel scale and
-          alignment information.
-        </p>
-      </div>
 
-      <!-- Step 2 -->
-      <div class="column is-one-third has-text-centered">
-        <span class="icon is-large" style="color: deepskyblue;">
-          <i class="fas fa-sliders-h fa-2x"></i>
-        </span>
-        <h3 class="title is-5" style="margin-top: 0.5rem;">2. Per-Instance Fine-Tuning</h3>
-        <p class="has-text-justified">
-          We fine-tune lightweight LoRA adapters on both the Flux.1-dev transformer and
-          its ControlNet upscaler, using the close-up/full-image pairs. Multi-texture
-          label maps guide the model to synthesize each material region with the correct
-          high-frequency detail.
-        </p>
-      </div>
+    <!-- Stage 1 ──────────────────────────────────────────────────── -->
+    <h3 class="title is-4" id="stage-data">1. Dataset Construction</h3>
 
-      <!-- Step 3 -->
-      <div class="column is-one-third has-text-centered">
-        <span class="icon is-large" style="color: deepskyblue;">
-          <i class="fas fa-expand-arrows-alt fa-2x"></i>
-        </span>
-        <h3 class="title is-5" style="margin-top: 0.5rem;">3. Gigapixel Inference</h3>
-        <p class="has-text-justified">
-          A sliding-window multi-diffusion pipeline processes the full image in
-          overlapping tiles. Tile stride decreases at early denoising steps for global
-          coherence and increases at later steps for detail; Gaussian blending removes
-          seam artifacts at boundaries.
-        </p>
-      </div>
+    <!-- TODO: replace with <img src="static/images/method_dataset.jpg" ...> -->
+    <div class="fig-placeholder" style="height: 260px; margin-bottom: 1.5rem;">
+      [ Dataset construction figure ]
+    </div>
 
+    <div class="content has-text-justified">
+      <p>
+        We capture a single full-view image using a standard smartphone camera alongside
+        <em>N</em> close-up images of specific regions with a digital microscope.
+        Because high magnification introduces extremely shallow depth of field, each
+        microscope view is built from a focus stack: we capture <em>K</em> frames at
+        varying focal distances, average burst frames to reduce sensor noise, align the
+        stack with SIFT keypoints, and fuse planes via Laplacian Pyramid Fusion to produce
+        a single all-in-focus close-up.
+      </p>
+      <p>
+        To construct pixel-aligned training pairs, we derive the relative scale factor
+        <em>s</em> from per-capture pixel density measurements, match color histograms
+        between the close-up and the corresponding full-image region, then synthesize the
+        low-resolution input via bicubic downsampling. For multi-material objects, we run
+        the Segment Anything Model (SAM) on each close-up to generate segmentation masks
+        that will guide synthesis at material boundaries.
+      </p>
+    </div>
+
+
+    <!-- Stage 2 ──────────────────────────────────────────────────── -->
+    <h3 class="title is-4" id="stage-finetune" style="margin-top: 2rem;">
+      2. Cascaded Per-Instance Fine-Tuning
+    </h3>
+
+    <!-- TODO: replace with <img src="static/images/method_finetune.jpg" ...> -->
+    <div class="fig-placeholder" style="height: 260px; margin-bottom: 1.5rem;">
+      [ Per-instance fine-tuning figure ]
+    </div>
+
+    <div class="content has-text-justified">
+      <p>
+        A single-stage upscaling model at extreme magnification lacks the spatial context
+        to infer large-scale pattern regularity. We adopt a cascaded approach, decomposing
+        the total scale factor <em>s</em> into two sequential stages
+        <em>s</em> = <em>s</em><sub>1</sub> &times; <em>s</em><sub>2</sub>. The first
+        stage recovers global pattern coherence at a coarser resolution; the second
+        refines local texture on the now-structurally sound canvas.
+      </p>
+      <p>
+        Both models are fine-tuned independently. We freeze the pretrained Flux.1-dev
+        transformer weights and inject LoRA adapters (rank <em>r</em>&nbsp;=&nbsp;32)
+        into the attention layers, binding a rare identifier token to each instance.
+        Structural alignment is provided by a ControlNet adapter conditioned on the
+        low-resolution input; material boundaries are enforced by concatenating
+        one-hot segmentation masks directly to the noisy latent along the channel
+        dimension. A conditioning warm-up trains on segmentation alone for 1,000 steps
+        before enabling the ControlNet for the final 1,000 steps.
+      </p>
+    </div>
+
+
+    <!-- Stage 3 ──────────────────────────────────────────────────── -->
+    <h3 class="title is-4" id="stage-inference" style="margin-top: 2rem;">
+      3. Gigapixel Inference
+    </h3>
+
+    <!-- TODO: replace with <img src="static/images/method_inference.jpg" ...> -->
+    <div class="fig-placeholder" style="height: 260px; margin-bottom: 1.5rem;">
+      [ Gigapixel inference figure ]
+    </div>
+
+    <div class="content has-text-justified">
+      <p>
+        At inference the full image is bicubic-upsampled to the target gigapixel
+        resolution. We apply MultiDiffusion with a variable-stride sliding window:
+        tile stride is small at early denoising steps for global coherence and
+        increases at later steps for fine detail. Overlapping tile predictions are
+        aggregated with Gaussian blending, eliminating seam artifacts at boundaries.
+        The two cascade modules are applied sequentially to reach the final output
+        resolution.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ── Baseline Comparison ──────────────────────────────────────── -->
+<section class="section" id="comparison" style="background-color: #f5f5f5;">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Baseline Comparison</h2>
+
+    <!-- TODO: replace with <img src="static/images/results_v5.jpg" ...> -->
+    <div class="fig-placeholder" style="height: 480px; margin-bottom: 1.5rem;">
+      [ Qualitative comparison figure: results_v5 ]
+    </div>
+
+    <div class="content has-text-justified">
+      <p>
+        We compare MicroZoom against four baselines spanning feed-forward and
+        per-instance paradigms. Rows are ordered from lowest to highest magnification.
+        For each example we show the full image with the queried region highlighted,
+        bicubic-upsampled input, outputs from each baseline, and our result.
+      </p>
+      <ul>
+        <li>
+          <strong>ContinuousSR</strong> — arbitrary-scale SR via a continuous 2D Gaussian
+          Field; struggles with the extreme domain shift of high-magnification close-ups.
+        </li>
+        <li>
+          <strong>Chain-of-Zoom (CoZ)</strong> — cascaded 4&times; steps with
+          scale-aware prompts; hallucinations compound across stages without real
+          reference grounding.
+        </li>
+        <li>
+          <strong>IPAdapter + ControlNet</strong> — zero-shot reference conditioning on
+          Flux.1-dev; confirms that per-instance adaptation is essential at these scales.
+        </li>
+        <li>
+          <strong>UltraZoom</strong> — closest competitor, per-instance fine-tuning
+          without the cascaded design or segmentation; struggles with multi-material
+          objects and globally incoherent structure.
+        </li>
+      </ul>
+    </div>
+
+
+    <!-- Quantitative table ──────────────────────────────────────── -->
+    <h3 class="title is-4 has-text-centered" style="margin-top: 2.5rem;">
+      Quantitative Comparison
+    </h3>
+    <p class="has-text-centered is-size-7" style="margin-bottom: 1rem;">
+      DISTS / LSD evaluated on synthetic LR; win-rate / top-1 from a 79-participant user study on real captures.
+    </p>
+
+    <div class="table-container">
+      <table class="table is-bordered is-striped is-hoverable is-fullwidth results-table has-text-centered">
+        <thead>
+          <tr>
+            <th rowspan="2" class="has-text-left">Method</th>
+            <th colspan="2">Syn-LR</th>
+            <th colspan="4">Ref-LR (User Study)</th>
+          </tr>
+          <tr>
+            <th>DISTS &darr;</th>
+            <th>LSD &darr;</th>
+            <th>Win Rate (Quality) &uarr;</th>
+            <th>Win Rate (Consistency) &uarr;</th>
+            <th>Top-1 (Quality) &uarr;</th>
+            <th>Top-1 (Consistency) &uarr;</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="has-text-left">ContinuousSR</td>
+            <td>0.296</td><td>1.774</td>
+            <td>0%</td><td>0%</td><td>2.05%</td><td>2.89%</td>
+          </tr>
+          <tr>
+            <td class="has-text-left">IPAdapter + ControlNet</td>
+            <td>0.324</td><td>1.813</td>
+            <td>0%</td><td>0%</td><td>0.84%</td><td>1.99%</td>
+          </tr>
+          <tr>
+            <td class="has-text-left">Chain-of-Zoom</td>
+            <td>0.297</td><td>1.386</td>
+            <td>0%</td><td>0%</td><td>2.59%</td><td>6.15%</td>
+          </tr>
+          <tr>
+            <td class="has-text-left">UltraZoom</td>
+            <td>0.232</td><td><strong>0.951</strong></td>
+            <td>23.8%</td><td>28.6%</td><td>33.99%</td><td>36.41%</td>
+          </tr>
+          <tr style="background-color: #e8f4fb;">
+            <td class="has-text-left"><strong>MicroZoom (Ours)</strong></td>
+            <td><strong>0.213</strong></td><td>1.014</td>
+            <td><strong>76.2%</strong></td><td><strong>71.4%</strong></td>
+            <td><strong>60.52%</strong></td><td><strong>52.56%</strong></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
@@ -218,8 +556,6 @@
   <div class="content has-text-centered">
     <p>
       Website template adapted from
-      <a href="https://github.com/ultra-zoom/ultra-zoom.github.io" target="_blank">UltraZoom</a>
-      and
       <a href="https://github.com/nerfies/nerfies.github.io" target="_blank">Nerfies</a>.
     </p>
   </div>
@@ -227,6 +563,26 @@
 
 <!-- Project JS -->
 <script src="static/js/index.js"></script>
+
+<!-- Viewer thumbnail switching (overrides index.js for the strip variant) -->
+<script>
+  (function () {
+    const iframe = document.getElementById("viewer-iframe");
+    const thumbs = document.querySelectorAll(".viewer-thumb-strip .thumb-item");
+
+    if (thumbs.length > 0) {
+      thumbs[0].classList.add("is-active");
+    }
+
+    thumbs.forEach(function (thumb) {
+      thumb.addEventListener("click", function () {
+        thumbs.forEach(function (t) { t.classList.remove("is-active"); });
+        thumb.classList.add("is-active");
+        iframe.src = thumb.dataset.viewerSrc;
+      });
+    });
+  })();
+</script>
 
 </body>
 </html>
