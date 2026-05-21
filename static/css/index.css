@@ -1,0 +1,129 @@
+/* ── Back-to-top button ───────────────────────────── */
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: deepskyblue;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 18px;
+}
+
+#myBtn:hover {
+  background-color: #0077aa;
+}
+
+/* ── Global font ──────────────────────────────────── */
+body, .navbar, .button, .title, .subtitle, p, a {
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+}
+
+/* ── Publication header typography ───────────────── */
+.publication-title {
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+}
+
+.publication-authors {
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+}
+
+.publication-venue {
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+}
+
+.publication-authors a {
+  color: hsl(204, 86%, 53%);
+}
+
+.publication-authors a:hover {
+  text-decoration: underline;
+}
+
+/* ── Video containers ─────────────────────────────── */
+.publication-video {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+}
+
+.publication-video iframe {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Interactive viewer (iframe) ──────────────────── */
+.results-carousel {
+  overflow: hidden;
+}
+
+.results-carousel .item {
+  margin: 5px;
+  overflow: hidden;
+  border: 1px solid #bbb;
+  border-radius: 10px;
+}
+
+#viewer-iframe {
+  width: 100%;
+  height: 70vh;
+  border: none;
+  border-radius: 10px;
+}
+
+/* ── Thumbnail gallery ────────────────────────────── */
+.thumbnail-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.thumbnail-gallery .thumb-item {
+  cursor: pointer;
+  border: 3px solid transparent;
+  border-radius: 6px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+}
+
+.thumbnail-gallery .thumb-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.thumbnail-gallery .thumb-item.is-active,
+.thumbnail-gallery .thumb-item:hover {
+  border-color: deepskyblue;
+}
+
+/* ── Method figure ────────────────────────────────── */
+.method-figure {
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* ── Footer links ─────────────────────────────────── */
+.footer .icon-link {
+  font-size: 25px;
+  color: #000;
+}
+
+.link-block a {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}

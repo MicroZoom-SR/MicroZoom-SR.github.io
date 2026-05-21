@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MicroZoom</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Bulma CSS framework -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
+  <!-- Bulma carousel / slider -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.24/dist/css/bulma-carousel.min.css">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Project stylesheet -->
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <!-- jQuery + Bulma carousel JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.24/dist/js/bulma-carousel.min.js"></script>
+
+  <style>
+    body {
+      font-family: 'Google Sans', 'Noto Sans', sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Back-to-top button ─────────────────────────────────────────── -->
+<button onclick="topFunction()" id="myBtn" title="Go to top">
+  <i class="fas fa-chevron-up"></i>
+</button>
+
+<!-- ── Navbar ────────────────────────────────────────────────────── -->
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://github.com/MicroZoom-SR/MicroZoom" target="_blank">
+        <span class="icon"><i class="fab fa-github"></i></span>
+        <span>Code</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ── Hero / Title ─────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+
+          <h1 class="title is-1 publication-title">
+            MicroZoom: Generating Gigapixel Images from Close-Up Macro Photographs
+          </h1>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Anonymous Authors</span>
+          </div>
+
+          <div class="is-size-5 publication-venue" style="margin-top: 0.5rem;">
+            <span class="author-block"><strong>SIGGRAPH 2025</strong></span>
+          </div>
+
+          <div class="column has-text-centered" style="margin-top: 1rem;">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark" target="_blank">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Paper (coming soon)</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/MicroZoom-SR/MicroZoom" class="external-link button is-normal is-rounded is-dark" target="_blank">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>Code</span>
+                </a>
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── Abstract ─────────────────────────────────────────────────── -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            <!-- TODO: add abstract -->
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── Interactive Results ───────────────────────────────────────── -->
+<section class="section" style="background-color: #f5f5f5;">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Interactive Results</h2>
+    <p class="has-text-centered" style="margin-bottom: 1rem;">
+      Use the deep-zoom viewer to explore our gigapixel outputs at full resolution.
+      Click a thumbnail below to switch examples.
+    </p>
+
+    <!-- Main viewer iframe — src is swapped by JS on thumbnail click -->
+    <iframe
+      id="viewer-iframe"
+      src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/"
+      allowfullscreen
+      title="MicroZoom deep-zoom viewer">
+    </iframe>
+
+    <!-- Thumbnail gallery ─────────────────────────────────────── -->
+    <!-- Add one .thumb-item per result; set data-viewer-src to the
+         per-example S3 URL, e.g. http://duckyduck123.s3-website-us-east-1.amazonaws.com/tote_cascade1/ -->
+    <div class="thumbnail-gallery" style="margin-top: 1rem;">
+
+      <div class="thumb-item"
+           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/tote_cascade1/"
+           title="Tote bag (cascade 1)">
+        <img src="static/images/tote_cascade1_thumb.jpg" alt="Tote bag cascade 1">
+      </div>
+
+      <div class="thumb-item"
+           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/tote_cascade2/"
+           title="Tote bag (cascade 2)">
+        <img src="static/images/tote_cascade2_thumb.jpg" alt="Tote bag cascade 2">
+      </div>
+
+      <!-- TODO: add more thumb-items as additional results are uploaded to S3 -->
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ── Method ────────────────────────────────────────────────────── -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">How It Works</h2>
+
+    <div class="columns is-multiline">
+
+      <!-- Step 1 -->
+      <div class="column is-one-third has-text-centered">
+        <span class="icon is-large" style="color: deepskyblue;">
+          <i class="fas fa-camera fa-2x"></i>
+        </span>
+        <h3 class="title is-5" style="margin-top: 0.5rem;">1. Data Capture</h3>
+        <p class="has-text-justified">
+          We capture a set of close-up macro photographs of an object alongside a single
+          full-view reference image. A connecting video is used to register each close-up
+          to the corresponding region in the full image, producing per-pixel scale and
+          alignment information.
+        </p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="column is-one-third has-text-centered">
+        <span class="icon is-large" style="color: deepskyblue;">
+          <i class="fas fa-sliders-h fa-2x"></i>
+        </span>
+        <h3 class="title is-5" style="margin-top: 0.5rem;">2. Per-Instance Fine-Tuning</h3>
+        <p class="has-text-justified">
+          We fine-tune lightweight LoRA adapters on both the Flux.1-dev transformer and
+          its ControlNet upscaler, using the close-up/full-image pairs. Multi-texture
+          label maps guide the model to synthesize each material region with the correct
+          high-frequency detail.
+        </p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="column is-one-third has-text-centered">
+        <span class="icon is-large" style="color: deepskyblue;">
+          <i class="fas fa-expand-arrows-alt fa-2x"></i>
+        </span>
+        <h3 class="title is-5" style="margin-top: 0.5rem;">3. Gigapixel Inference</h3>
+        <p class="has-text-justified">
+          A sliding-window multi-diffusion pipeline processes the full image in
+          overlapping tiles. Tile stride decreases at early denoising steps for global
+          coherence and increases at later steps for detail; Gaussian blending removes
+          seam artifacts at boundaries.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ── Footer ────────────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+      Website template adapted from
+      <a href="https://github.com/ultra-zoom/ultra-zoom.github.io" target="_blank">UltraZoom</a>
+      and
+      <a href="https://github.com/nerfies/nerfies.github.io" target="_blank">Nerfies</a>.
+    </p>
+  </div>
+</footer>
+
+<!-- Project JS -->
+<script src="static/js/index.js"></script>
+
+</body>
+</html>
