@@ -1,0 +1,26 @@
+# Core dependencies
+torch>=2.0.0
+torchvision
+transformers
+accelerate
+peft
+Pillow
+numpy
+mediapy
+imageio
+lpips
+opencv-python
+tqdm
+psutil
+huggingface_hub
+deepzoom
+
+# diffusers must be installed from source (requires 0.33.0.dev0+):
+#   pip install git+https://github.com/huggingface/diffusers.git
+
+# Optional — alternative optimizers
+# bitsandbytes   # 8-bit Adam (lower VRAM during training)
+# prodigyopt     # Prodigy optimizer
+
+# Optional — experiment tracking
+# wandb

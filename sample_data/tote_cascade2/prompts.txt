@@ -1,0 +1,5 @@
+tote_close00.jpg: detailed close-up of lun texture
+tote_close01.jpg: detailed close-up of olis texture
+tote_close02.jpg: detailed close-up of hta texture
+tote_close03.jpg: detailed close-up of lun and olis textures
+tote_close04.jpg: detailed close-up of lun and hta textures

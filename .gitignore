@@ -1,0 +1,52 @@
+# Data (large checkpoints and datasets)
+data/
+archive/
+submission_materials/
+helper_functions/
+scripts/
+deepzoom/
+
+# Weights and model files
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+*.bin
+*.codex
+
+# Wandb logs
+wandb/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+*.egg
+dist/
+build/
+.eggs/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+*_log.txt
+*_err.txt
+
+# Deepzoom build artifacts
+deepzoom/build/
+deepzoom/dist/
+deepzoom/*.egg-info/
