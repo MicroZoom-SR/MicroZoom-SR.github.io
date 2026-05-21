@@ -33,7 +33,7 @@ You will also need access to the base models from Hugging Face:
 - [`black-forest-labs/FLUX.1-dev`](https://huggingface.co/black-forest-labs/FLUX.1-dev)
 - [`jasperai/Flux.1-dev-Controlnet-Upscaler`](https://huggingface.co/jasperai/Flux.1-dev-Controlnet-Upscaler)
 
-Authenticate with `huggingface-cli login` before downloading gated models.
+Authenticate with `hf auth login` before downloading gated models.
 
 ---
 
@@ -64,16 +64,16 @@ Train a per-instance LoRA on the sample tote bag object:
 ```bash
 accelerate launch src/train.py \
   --pretrained_model_name_or_path black-forest-labs/FLUX.1-dev \
-  --instance_data_dir "sample_data/tote_cascade1/tote_close*.jpg" \
-  --closeup_label_map_root "sample_data/tote_cascade1/tote_close*_label_map.png" \
+  --instance_data_dir "sample_data/tote_cascade1/tote_close.jpg" \
+  --closeup_label_map_root "sample_data/tote_cascade1/tote_close.png" \
   --val_data_dir sample_data/tote_cascade1/tote_full.jpg \
   --full_label_map_root sample_data/tote_cascade1/tote_full_label_map.png \
   --instance_prompt "detailed close-up photo of tote bag textures" \
   --validation_prompt "detailed close-up photo of tote bag textures" \
-  --num_textures 3 \
+  --num_textures 4 \
   --output_dir outputs/tote_cascade1 \
   --test_vis_dir outputs/tote_cascade1/vis \
-  --resolution 768 \
+  --resolution 1024 \
   --mixed_precision bf16 \
   --gradient_accumulation_steps 4 \
   --steps_per_epoch 250 \
@@ -110,9 +110,10 @@ python src/inference.py \
   --data_name tote_cascade1 \
   --test_dir sample_data/tote_cascade1 \
   --lora_root outputs/tote_cascade1/checkpoint-ep0002 \
-  --scale_path sample_data/tote_cascade1/registration/scale.txt \
-  --num_textures 3 \
-  --res 768 \
+  --scale_path outputs/tote_cascade1/vis/final_scale.txt \
+  --prompt_path sample_data/tote_cascade1/inference_prompts.txt \
+  --num_textures 4 \
+  --res 1024 \
   --stride_method linear \
   --use_gaussian_mask
 ```
@@ -134,18 +135,3 @@ Key arguments:
 | `--num_inference_steps` | Override the default number of denoising steps (28 for FLUX.1-dev) |
 
 Results are saved under `<lora_root>/results_<datetime>_stride<method>/<data_name>/`.
-
----
-
-## Project Status
-
-**Available:**
-- Training and inference code
-- Custom Flux ControlNet pipeline with multi-texture label-map conditioning
-- Sample data (`tote_cascade1`, `tote_cascade2`) with close-ups, full images, label maps, and registration data
-
-**Coming soon:**
-- Preprocessing pipeline (macro capture → registration → label map generation)
-- Pretrained checkpoints
-- Evaluation code
-- Full dataset release
