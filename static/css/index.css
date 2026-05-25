@@ -146,3 +146,12 @@ body, .navbar, .button, .title, .subtitle, p, a {
   margin-top: 5px;
   margin-bottom: 5px;
 }
+
+/* Tighter gap between publication links and teaser */
+section.hero:not(.teaser) .hero-body {
+  padding-bottom: 0.75rem;
+}
+
+.hero.teaser .hero-body {
+  padding-top: 0.75rem;
+}
