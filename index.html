@@ -113,13 +113,7 @@
                 </a>
               </span>
               <span class="link-block">
-                <a href="#" class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="fab fa-youtube"></i></span>
-                  <span>Video</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="https://github.com/MicroZoom-SR/MicroZoom" class="external-link button is-normal is-rounded is-dark" target="_blank">
+                <a href="https://github.com/MicroZoom-SR/MicroZoom-SR.github.io" class="external-link button is-normal is-rounded is-dark" target="_blank">
                   <span class="icon"><i class="fab fa-github"></i></span>
                   <span>Code</span>
                 </a>
@@ -138,7 +132,7 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <img src="static/images/teaser/teaser_v7.png" alt="MicroZoom teaser figure" style="width: 100%; border-radius: 8px;">
+      <img src="static/images/teaser/teaser.gif" alt="MicroZoom teaser figure" style="width: 100%; border-radius: 8px;">
       <h2 class="subtitle has-text-centered" style="margin-top: 1rem;">
         <span class="dnerf">MicroZoom</span> synthesizes gigapixel-resolution images grounded in
         consumer-grade microscope close-ups at magnification levels up to 350&times;.
@@ -147,7 +141,6 @@
     <p style="text-align: center; margin-bottom: 2rem;">
       Skip to: &nbsp;
       <a href="#abstract">[Abstract]</a> &nbsp;
-      <a href="#video">[Video]</a> &nbsp;
       <a href="#results">[Results]</a> &nbsp;
       <a href="#method">[Method]</a> &nbsp;
       <a href="#comparison">[Comparison]</a>
@@ -164,13 +157,13 @@
     </h2>
     <p class="has-text-centered" style="margin-bottom: 1rem;">
       Best viewed on a large screen &bull; Scroll / pinch to zoom &bull; Drag to pan &bull;
-      Image may take a few seconds to load after zooming
+      Highlighted regions have gone through super-resolution &bull; Image may take a few seconds to load after zooming
     </p>
 
     <div class="viewer-frame">
       <iframe
         id="viewer-iframe"
-        src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/rubiks_cube/index_fullzoom.html"
+        src="https://homes.cs.washington.edu/~jingweim/public/demo_page_mz/rubiks_cube/index_overlay.html"
         allowfullscreen
         title="Interactive Teaser">
       </iframe>
@@ -180,107 +173,107 @@
     <div class="viewer-thumb-strip" style="margin-top: 1rem;">
 
       <div class="thumb-item"
-           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/rubiks_cube/index_fullzoom.html"
+           data-viewer-src="https://homes.cs.washington.edu/~jingweim/public/demo_page_mz/rubiks_cube/index_overlay.html"
            title="Rubiks Cube">
         <img src="static/images/thumbnails/rubiks_cube_full.jpg" alt="Rubiks Cube">
       </div>
       <div class="thumb-item"
-           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/tote/index_fullzoom.html"
+           data-viewer-src="https://homes.cs.washington.edu/~jingweim/public/demo_page_mz/tote/index_overlay.html"
            title="Tote">
         <img src="static/images/thumbnails/tote_full.jpg" alt="Tote">
       </div>
       <div class="thumb-item"
-           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/lens_cloth/index_fullzoom.html"
+           data-viewer-src="https://homes.cs.washington.edu/~jingweim/public/demo_page_mz/lens_cloth/index_overlay.html"
            title="Lens Cloth">
         <img src="static/images/thumbnails/lens_cloth_full.jpg" alt="Lens Cloth">
       </div>
       <div class="thumb-item"
-           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/orange/index_fullzoom.html"
+           data-viewer-src="https://homes.cs.washington.edu/~jingweim/public/demo_page_mz/orange/index_overlay.html"
            title="Orange">
         <img src="static/images/thumbnails/orange_full.jpg" alt="Orange">
       </div>
       <div class="thumb-item"
-           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/wallet/index_fullzoom.html"
+           data-viewer-src="https://homes.cs.washington.edu/~jingweim/public/demo_page_mz/wallet/index_overlay.html"
            title="Wallet">
         <img src="static/images/thumbnails/wallet_full.jpg" alt="Wallet">
       </div>
       <div class="thumb-item"
-           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/asian_pear/index_fullzoom.html"
+           data-viewer-src="https://homes.cs.washington.edu/~jingweim/public/demo_page_mz/asian_pear/index_overlay.html"
            title="Asian Pear">
         <img src="static/images/thumbnails/asian_pear_full.jpg" alt="Asian Pear">
       </div>
       <div class="thumb-item"
-           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/leaf/index_fullzoom.html"
+           data-viewer-src="https://homes.cs.washington.edu/~jingweim/public/demo_page_mz/leaf/index_overlay.html"
            title="Leaf">
         <img src="static/images/thumbnails/leaf_full.jpg" alt="Leaf">
       </div>
       <div class="thumb-item"
-           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/dill_cheese/index_fullzoom.html"
+           data-viewer-src="https://homes.cs.washington.edu/~jingweim/public/demo_page_mz/dill_cheese/index_overlay.html"
            title="Dill Cheese">
         <img src="static/images/thumbnails/dill_cheese_full.jpg" alt="Dill Cheese">
       </div>
       <div class="thumb-item"
-           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/microfiber/index_fullzoom.html"
+           data-viewer-src="https://homes.cs.washington.edu/~jingweim/public/demo_page_mz/microfiber/index_overlay.html"
            title="Microfiber">
         <img src="static/images/thumbnails/microfiber_full.jpg" alt="Microfiber">
       </div>
       <div class="thumb-item"
-           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/blue_shirt/index_fullzoom.html"
+           data-viewer-src="https://homes.cs.washington.edu/~jingweim/public/demo_page_mz/blue_shirt/index_overlay.html"
            title="Blue Shirt">
         <img src="static/images/thumbnails/blue_shirt_full.jpg" alt="Blue Shirt">
       </div>
       <div class="thumb-item"
-           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/salt/index_fullzoom.html"
+           data-viewer-src="https://homes.cs.washington.edu/~jingweim/public/demo_page_mz/salt/index_overlay.html"
            title="Salt">
         <img src="static/images/thumbnails/salt_full.jpg" alt="Salt">
       </div>
       <div class="thumb-item"
-           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/rice/index_fullzoom.html"
+           data-viewer-src="https://homes.cs.washington.edu/~jingweim/public/demo_page_mz/rice/index_overlay.html"
            title="Rice">
         <img src="static/images/thumbnails/rice_full.jpg" alt="Rice">
       </div>
       <div class="thumb-item"
-           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/strawberry/index_fullzoom.html"
+           data-viewer-src="https://homes.cs.washington.edu/~jingweim/public/demo_page_mz/strawberry/index_overlay.html"
            title="Strawberry">
         <img src="static/images/thumbnails/strawberry_full.jpg" alt="Strawberry">
       </div>
       <div class="thumb-item"
-           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/patagonia/index_fullzoom.html"
+           data-viewer-src="https://homes.cs.washington.edu/~jingweim/public/demo_page_mz/patagonia/index_overlay.html"
            title="Patagonia">
         <img src="static/images/thumbnails/patagonia_full.jpg" alt="Patagonia">
       </div>
       <div class="thumb-item"
-           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/tomato/index_fullzoom.html"
+           data-viewer-src="https://homes.cs.washington.edu/~jingweim/public/demo_page_mz/tomato/index_overlay.html"
            title="Tomato">
         <img src="static/images/thumbnails/tomato_full.jpg" alt="Tomato">
       </div>
       <div class="thumb-item"
-           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/bread/index_fullzoom.html"
+           data-viewer-src="https://homes.cs.washington.edu/~jingweim/public/demo_page_mz/bread/index_overlay.html"
            title="Bread">
         <img src="static/images/thumbnails/bread_full.jpg" alt="Bread">
       </div>
       <div class="thumb-item"
-           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/broccoli/index_fullzoom.html"
+           data-viewer-src="https://homes.cs.washington.edu/~jingweim/public/demo_page_mz/broccoli/index_overlay.html"
            title="Broccoli">
         <img src="static/images/thumbnails/broccoli_full.jpg" alt="Broccoli">
       </div>
       <div class="thumb-item"
-           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/mushroom/index_fullzoom.html"
+           data-viewer-src="https://homes.cs.washington.edu/~jingweim/public/demo_page_mz/mushroom/index_overlay.html"
            title="Mushroom">
         <img src="static/images/thumbnails/mushroom_full.jpg" alt="Mushroom">
       </div>
       <div class="thumb-item"
-           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/cardigan/index_fullzoom.html"
+           data-viewer-src="https://homes.cs.washington.edu/~jingweim/public/demo_page_mz/cardigan/index_overlay.html"
            title="Cardigan">
         <img src="static/images/thumbnails/cardigan_full.jpg" alt="Cardigan">
       </div>
       <div class="thumb-item"
-           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/blue_cardigan/index_fullzoom.html"
+           data-viewer-src="https://homes.cs.washington.edu/~jingweim/public/demo_page_mz/blue_cardigan/index_overlay.html"
            title="Blue Cardigan">
         <img src="static/images/thumbnails/blue_cardigan_full.jpg" alt="Blue Cardigan">
       </div>
       <div class="thumb-item"
-           data-viewer-src="http://duckyduck123.s3-website-us-east-1.amazonaws.com/plush/index_fullzoom.html"
+           data-viewer-src="https://homes.cs.washington.edu/~jingweim/public/demo_page_mz/plush/index_overlay.html"
            title="Plush">
         <img src="static/images/thumbnails/plush_full.jpg" alt="Plush">
       </div>
@@ -318,27 +311,6 @@
     </div>
   </div>
 </section>
-
-
-<!-- ── Video ─────────────────────────────────────────────────────── -->
-<section class="section" id="video">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Video</h2>
-        <div class="publication-video">
-          <!-- TODO: replace VIDEO_ID with the actual YouTube video ID -->
-          <!-- <iframe src="https://www.youtube.com/embed/VIDEO_ID?rel=0&showinfo=0"
-                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
-          <div class="fig-placeholder" style="height: 100%; position: absolute; width: 100%; top: 0; left: 0;">
-            [ Video placeholder — embed YouTube URL here ]
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 
 <!-- ── Method ────────────────────────────────────────────────────── -->
 <section class="section" id="method">
@@ -473,71 +445,12 @@
     </div>
 
 
-    <!-- Quantitative table ────────────────────────────────────────
-    <h3 class="title is-4 has-text-centered" style="margin-top: 2.5rem;">
-      Quantitative Comparison
-    </h3>
-    <p class="has-text-centered is-size-7" style="margin-bottom: 1rem;">
-      DISTS / LSD evaluated on synthetic LR; win-rate / top-1 from a 79-participant user study on real captures.
-    </p>
-
-    <div class="table-container">
-      <table class="table is-bordered is-striped is-hoverable is-fullwidth results-table has-text-centered">
-        <thead>
-          <tr>
-            <th rowspan="2" class="has-text-left">Method</th>
-            <th colspan="2">Syn-LR</th>
-            <th colspan="4">Ref-LR (User Study)</th>
-          </tr>
-          <tr>
-            <th>DISTS &darr;</th>
-            <th>LSD &darr;</th>
-            <th>Win Rate (Quality) &uarr;</th>
-            <th>Win Rate (Consistency) &uarr;</th>
-            <th>Top-1 (Quality) &uarr;</th>
-            <th>Top-1 (Consistency) &uarr;</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="has-text-left">ContinuousSR</td>
-            <td>0.296</td><td>1.774</td>
-            <td>0%</td><td>0%</td><td>2.05%</td><td>2.89%</td>
-          </tr>
-          <tr>
-            <td class="has-text-left">IPAdapter + ControlNet</td>
-            <td>0.324</td><td>1.813</td>
-            <td>0%</td><td>0%</td><td>0.84%</td><td>1.99%</td>
-          </tr>
-          <tr>
-            <td class="has-text-left">Chain-of-Zoom</td>
-            <td>0.297</td><td>1.386</td>
-            <td>0%</td><td>0%</td><td>2.59%</td><td>6.15%</td>
-          </tr>
-          <tr>
-            <td class="has-text-left">UltraZoom</td>
-            <td>0.232</td><td><strong>0.951</strong></td>
-            <td>23.8%</td><td>28.6%</td><td>33.99%</td><td>36.41%</td>
-          </tr>
-          <tr style="background-color: #e8f4fb;">
-            <td class="has-text-left"><strong>MicroZoom (Ours)</strong></td>
-            <td><strong>0.213</strong></td><td>1.014</td>
-            <td><strong>76.2%</strong></td><td><strong>71.4%</strong></td>
-            <td><strong>60.52%</strong></td><td><strong>52.56%</strong></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section> -->
-
-
 <!-- ── Footer ────────────────────────────────────────────────────── -->
 <footer class="section site-footer">
   <div class="container is-max-desktop has-text-centered">
     <p>
       Website template adapted from
-      <a href="https://github.com/nerfies/nerfies.github.io" target="_blank">Nerfies</a>.
+      <a href="https://ultra-zoom.github.io/" target="_blank">UltraZoom</a>.
     </p>
   </div>
 </footer>
